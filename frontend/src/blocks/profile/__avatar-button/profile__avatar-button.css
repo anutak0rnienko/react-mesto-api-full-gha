@@ -1,0 +1,23 @@
+.profile__avatar-button {
+    background: rgba(0, 0, 0, 0.8);
+    background-image: url('../../../images/Vectoravatar.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    border-style: none;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    width: 120px;
+    height: 120px;
+    opacity: 0;
+}
+
+.profile__avatar-button:hover {
+    opacity: 0.8;
+    transition: 0.3s linear;
+}

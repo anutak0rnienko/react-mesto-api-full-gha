@@ -1,0 +1,4 @@
+.popup__input_form_invalid {
+    /* border-bottom: 1px solid red; */
+    border-bottom-color: red;
+}
