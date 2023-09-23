@@ -1,3 +1,5 @@
+// eslint-disable-next-line import/no-unresolved
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -40,6 +42,12 @@ mongoose.connect(DB_ADDRESS, {
   useCreateIndex: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
+});
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
 });
 
 app.use(bodyParser.json());
