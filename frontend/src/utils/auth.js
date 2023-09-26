@@ -1,4 +1,4 @@
-export const BASE_URL = "https://auth.nomoreparties.co";
+export const BASE_URL = "https://api.domainname.anna.nomoredomainsrocks.ru";
 
 export function register(email, password) {
     console.log(password, email);

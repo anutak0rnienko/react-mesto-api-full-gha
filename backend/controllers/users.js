@@ -1,3 +1,4 @@
+const { JWT_SECRET, NODE_ENV } = process.env;
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
@@ -106,7 +107,7 @@ module.exports.login = (req, res, next) => {
       // создадим токен
       const tokenJwt = jwt.sign(
         { _id: user._id },
-        'some-secret-key',
+        `${NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret'}`,
         { expiresIn: '7d' },
       );
       res.cookie('jwt', tokenJwt, {
