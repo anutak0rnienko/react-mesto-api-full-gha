@@ -57,6 +57,7 @@ export default function App() {
         }
     }, [loggedIn]);
 
+// eslint-disable-next-line
     React.useEffect(() => {
         if (localStorage.getItem("jwt")) {
             const jwt = localStorage.getItem("jwt");
