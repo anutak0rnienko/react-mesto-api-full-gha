@@ -10,6 +10,7 @@ const cors = require('cors');
 const routes = require('./routes/router');
 const handleError = require('./middlewares/handleError');
 const { DB_ADDRESS } = require('./config');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const { PORT = 3000 } = process.env;
 
@@ -26,16 +27,7 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
 }));
 
-// mongoose
-//   .connect('mongodb://127.0.0.1:27017/mestodb')
-//   .then(() => {
-//     // eslint-disable-next-line no-console
-//     console.log('БД подключена');
-//   })
-//   .catch(() => {
-//     // eslint-disable-next-line no-console
-//     console.log('Не удалось подключиться к БД');
-//   });
+app.use(requestLogger);
 
 mongoose.connect(DB_ADDRESS, {
   useNewUrlParser: true,
@@ -52,6 +44,7 @@ app.get('/crash-test', () => {
 
 app.use(bodyParser.json());
 
+app.use(errorLogger);
 app.use(routes);
 app.use(cookieParser());
 app.use(errors());

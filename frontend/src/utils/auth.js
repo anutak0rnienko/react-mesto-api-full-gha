@@ -5,6 +5,7 @@ export function register(email, password) {
     return fetch(`${BASE_URL}/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: 'include',
         body: JSON.stringify({
             password: password,
             email: email,
@@ -16,6 +17,7 @@ export function authorize(password, email) {
     return fetch(`${BASE_URL}/signin`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: 'include',
         body: JSON.stringify({
             password: password,
             email: email,
@@ -30,6 +32,7 @@ export function getContent(jwt) {
             "Content-Type": "application/json",
             Authorization: `Bearer ${jwt}`,
         },
+        credentials: 'include',
     }).then((res) => checkError(res));
 }
 

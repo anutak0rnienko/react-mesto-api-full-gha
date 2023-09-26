@@ -7,6 +7,7 @@ class Api {
     getInitialCardsApi() {
         return fetch(`${this._url}/cards`, {
             method: "GET",
+            credentials: "include",
             headers: this._headers,
         }).then((res) => this._checkError(res));
     }
@@ -14,6 +15,7 @@ class Api {
     getUserInfoApi() {
         return fetch(`${this._url}/users/me`, {
             method: "GET",
+            credentials: "include",
             headers: this._headers,
         }).then((res) => this._checkError(res));
     }
@@ -21,6 +23,7 @@ class Api {
     addCardElements(data) {
         return fetch(`${this._url}/cards`, {
             method: "POST",
+            credentials: "include",
             headers: this._headers,
             body: JSON.stringify(data),
         }).then((res) => this._checkError(res));
@@ -29,6 +32,7 @@ class Api {
     editProfile(data) {
         return fetch(`${this._url}/users/me`, {
             method: "PATCH",
+            credentials: "include",
             headers: this._headers,
             body: JSON.stringify({
                 name: data.name,
@@ -40,6 +44,7 @@ class Api {
     deleteCard(cardId) {
         return fetch(`${this._url}/cards/${cardId}`, {
             method: "DELETE",
+            credentials: "include",
             headers: this._headers,
         }).then((res) => this._checkError(res));
     }
@@ -47,6 +52,7 @@ class Api {
     editProfileAvatar(data) {
         return fetch(`${this._url}/users/me/avatar`, {
             method: "PATCH",
+            credentials: "include",
             headers: this._headers,
             body: JSON.stringify(data),
         }).then((res) => this._checkError(res));
@@ -62,13 +68,13 @@ class Api {
     changeLikeCardStatus(cardId, isLiked) {
         return fetch(`${this._url}/cards/${cardId}/likes`, {
             method: `${!isLiked ? "DELETE" : "PUT"}`,
+            credentials: "include",
             headers: this._headers,
         }).then((res) => this._checkError(res));
     }
 }
 
 const api = new Api({
-    // url: "https://mesto.nomoreparties.co/v1/cohort-65",
     url: "https://api.domainname.anna.nomoredomainsrocks.ru",
     headers: {
         "Content-Type": "application/json",
