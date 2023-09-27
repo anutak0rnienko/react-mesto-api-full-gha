@@ -1,5 +1,5 @@
 class Api {
-    constructor({apiConfig}) {
+    constructor(apiConfig) {
         this._url = apiConfig;
         // this._headers = apiConfig.headers;
     }
