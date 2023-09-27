@@ -25,12 +25,12 @@ export function authorize(password, email) {
     }).then((res) => checkError(res));
 }
 
-export function getContent(jwt) {
+export function getContent (token ) {
     return fetch(`${BASE_URL}/users/me`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${jwt}`,
+            Authorization: `Bearer ${token}`,
         },
         credentials: 'include',
     }).then((res) => checkError(res));

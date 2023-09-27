@@ -1,6 +1,6 @@
 class Api {
-    constructor(apiConfig) {
-        this._url = apiConfig;
+    constructor({url}) {
+        this._url = url;
         // this._headers = apiConfig.headers;
     }
 
@@ -96,11 +96,7 @@ class Api {
 }
 
 const api = new Api({
-    url: "https://api.domainname.anna.nomoredomainsrocks.ru",
-    headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("jwt")}`,
-    },
+    url: "https://api.domainname.anna.nomoredomainsrocks.ru"
 });
 
 export default api;
