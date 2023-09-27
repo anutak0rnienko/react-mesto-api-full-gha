@@ -45,10 +45,10 @@ export const profileForm = document.forms["form"];
 export const avatarForm = document.forms["form-avatar"];
 export const deleteForm = document.querySelector(".popup_type_delete");
 
-// export const apiConfig = {
-//     url: "https://mesto.nomoreparties.co/v1/cohort-65",
-//     headers: {
-//         "Content-Type": "application/json",
-//         authorization: "a78ff19e-0d6f-4d15-9950-0c2176ee362c",
-//     },
-// };
+export const apiConfig = {
+    url: "https://mesto.nomoreparties.co/v1/cohort-65",
+    headers: {
+        "Content-Type": "application/json",
+        authorization: "a78ff19e-0d6f-4d15-9950-0c2176ee362c",
+    },
+};

@@ -21,7 +21,6 @@ app.use(cors({
     'http://localhost:3000',
     'https://domainname.anna.nomoredomainsrocks.ru',
     'http://domainname.anna.nomoredomainsrocks.ru',
-    'http://192.168.1.7:3000',
   ],
   credentials: true,
   methods: 'GET, PUT, PATCH, POST, DELETE',
