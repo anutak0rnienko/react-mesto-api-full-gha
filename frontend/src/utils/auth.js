@@ -1,11 +1,11 @@
-export const BASE_URL = "https://api.domainname.anna.nomoredomainsrocks.ru/";
+export const BASE_URL = "https://api.domainname.anna.nomoredomainsrocks.ru";
 
 export function register(email, password) {
     console.log(password, email);
-    return fetch(`${BASE_URL}signup`, {
+    return fetch(`${BASE_URL}/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        credentials: 'include',
+        credentials: "include",
         body: JSON.stringify({
             password: password,
             email: email,
@@ -14,26 +14,32 @@ export function register(email, password) {
 }
 
 export function authorize(password, email) {
-    return fetch(`${BASE_URL}signin`, {
+    return fetch(`${BASE_URL}/signin`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        credentials: 'include',
+        credentials: "include",
         body: JSON.stringify({
             password: password,
             email: email,
         }),
-    }).then((res) => checkError(res));
+    }).then((res) => checkError(res))
+        .then((data) => {
+            if (data.token) {
+                localStorage.setItem('jwt', data.token);
+                return data;
+        }
+      })
 }
 
-export const getContent = (token ) => {
-    return fetch(`${BASE_URL}users/me`, {
+export function getContent(jwt) {
+    return fetch(`${BASE_URL}/users/me`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
         },
-        credentials: 'include',
-    }).then((res) => checkError(res));
+        credentials: "include",
+    }).then((res) => checkError(res))
+        .then((data) => data);
 }
 
 function checkError(res) {
