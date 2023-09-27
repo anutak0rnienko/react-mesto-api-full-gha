@@ -8,7 +8,7 @@
 Адрес репозитория: https://github.com/anutak0rnienko/react-mesto-api-full-gha.git
 ## Ссылки на проект
 
-IP-адрес 62.84.115.89
+IP 62.84.115.89
 
 Frontend https://domainname.anna.nomoredomainsrocks.ru
 
