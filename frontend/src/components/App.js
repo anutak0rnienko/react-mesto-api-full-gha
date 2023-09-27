@@ -59,21 +59,19 @@ export default function App() {
 
 // eslint-disable-next-line
     React.useEffect(() => {
-        if (localStorage.getItem("jwt")) {
-            const jwt = localStorage.getItem("jwt");
-            auth.getContent(jwt)
+            auth.getContent()
                 .then((res) => {
                     if (res) {
                         setLoggedIn(true);
                         setEmail(res.data.email);
-                        navigate("/");
+                        navigate("/", { replace: true });
                     }
                 })
                 .catch((err) => {
                     console.log(`Ошибка: ${err}`);
                 });
-        }
-    }, []);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, []);
 
     function handleCardLike(card) {
         const isLiked = card.likes.some((i) => i._id === currentUser._id);
