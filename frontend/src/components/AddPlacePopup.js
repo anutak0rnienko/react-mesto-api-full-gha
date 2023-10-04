@@ -51,6 +51,7 @@ export default function EditProfilePopup({
                 minLength="2"
                 maxLength="30"
                 onChange={handleChangePlaceName}
+                value={namePlace}
             />
             <span className="popup__form-error popup__form-error-title"></span>
             <input
@@ -61,6 +62,7 @@ export default function EditProfilePopup({
                 placeholder="Ссылка на картинку"
                 required
                 onChange={handleChangeLink}
+                value={link}
             />
             <span className="popup__form-error popup__form-error-image"></span>
         </PopupWithForm>

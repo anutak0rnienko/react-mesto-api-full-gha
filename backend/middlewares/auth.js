@@ -1,22 +1,28 @@
-const { JWT_SECRET, NODE_ENV } = process.env;
 const jwt = require('jsonwebtoken');
-const NotFoundStatusCode = require('../utils/NotFoundAuthStatus');
 
-const authorization = (req, res, next) => {
-  let token;
-  try {
-    token = req.cookies.jwt;
-  } catch (err) {
-    throw new NotFoundStatusCode('Необходимо авторизироваться');
+const { AUTH_KEY } = require('../utils/constants');
+const UnauthorizedError = require('../errors/UnauthorizedError');
+
+module.exports = (req, res, next) => {
+  const { authorization } = req.headers;
+  const bearer = 'Bearer ';
+  const errorMsg = 'Неправильные почта или пароль';
+
+  if (!authorization || !authorization.startsWith(bearer)) {
+    return next(new UnauthorizedError(`${errorMsg}(${authorization})!`));
   }
+
+  const token = authorization.replace(bearer, '');
+
   let payload;
-  try {
-    payload = jwt.verify(token, `${NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret'}`);
-  } catch (err) {
-    throw new NotFoundStatusCode('Необходимо авторизироваться');
-  }
-  req.user = payload;
-  next();
-};
 
-module.exports = authorization;
+  try {
+    payload = jwt.verify(token, AUTH_KEY);
+  } catch (err) {
+    return next(new UnauthorizedError(`${errorMsg}!`));
+  }
+
+  req.user = payload;
+
+  return next();
+};
