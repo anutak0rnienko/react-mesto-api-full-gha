@@ -109,8 +109,8 @@ class Api {
 }
 
 const api = new Api({
-  //  url: "https://api.domainname.anna.nomoredomainsrocks.ru",
-  url: "http://localhost:3000",
+   url: "https://api.domainname.anna.nomoredomainsrocks.ru",
+  // url: "http://localhost:3000",
 })
 
 export default api

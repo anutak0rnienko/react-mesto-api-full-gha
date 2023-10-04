@@ -1,5 +1,5 @@
-//export const BASE_URL = "https://api.domainname.anna.nomoredomainsrocks.ru";
-export const BASE_URL = "http://localhost:3000"
+export const BASE_URL = "https://api.domainname.anna.nomoredomainsrocks.ru";
+// export const BASE_URL = "http://localhost:3000"
 
 export function register(email, password) {
   console.log(password, email)
